@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#121212">
+    <title>When to Walk</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-512.png">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('SW registered: ', reg.scope))
+                    .catch(err => console.log('SW registration failed: ', err));
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <h1>When to Walk 🐕</h1>
+            <p id="location-status">Locating...</p>
+            <div class="unit-toggle">
+                <label class="switch">
+                    <input type="checkbox" id="unit-switch">
+                    <span class="slider round"></span>
+                </label>
+                <span id="unit-label">°C</span>
+            </div>
+        </header>
+
+        <main>
+            <section id="overview" class="card overview-card">
+                <div class="current-side">
+                    <h2>Current Conditions</h2>
+                    <div id="weather-display" class="current-weather-layout">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="sun-side">
+                    <h2>Sun Schedule ☀️</h2>
+                    <div id="sun-display" class="sun-grid">
+                        <div>
+                            <span class="label">Sunrise</span>
+                            <span id="sunrise-time">--:--</span>
+                        </div>
+                        <div>
+                            <span class="label">Sunset</span>
+                            <span id="sunset-time">--:--</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="top-recommendations" class="card">
+                <h2>Top 3 Recommendations 🏆</h2>
+                <ul id="top-list" class="window-list">
+                    <!-- Populated by JS -->
+                </ul>
+            </section>
+
+            <section id="precipitation-forecast" class="card">
+                <h2>Precipitation Chance</h2>
+                <div class="chart-container">
+                    <canvas id="precipChart"></canvas>
+                </div>
+            </section>
+
+            <section id="walking-windows" class="card">
+                <h2>All Upcoming Windows</h2>
+                <ul id="windows-list" class="window-list">
+                    <!-- Populated by JS -->
+                </ul>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
