@@ -1,4 +1,4 @@
-const CACHE_NAME = 'when-to-walk-v3';
+const CACHE_NAME = 'when-to-walk-v4';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
