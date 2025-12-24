@@ -1,7 +1,7 @@
 const app = {
     location: null,
     weatherData: null,
-    units: 'metric', // 'metric' or 'imperial'
+    units: 'imperial', // 'metric' or 'imperial'
 
     init: () => {
         const toggle = document.getElementById('unit-switch');
